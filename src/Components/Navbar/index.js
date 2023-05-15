@@ -34,12 +34,14 @@ function Navbar() {
                 </MobileMenuWrapper>
             </MobileMenuContainer>
             <Row maxWidth="unset" className="grow align-center">
+                {/*column 1*/}
                 <Column>
                     <h2 className="logo">COMPANY LOGO</h2>
                 </Column>
-                <Column>
-                    <Nav className="navigation-wrapper">
-                        <DropdownParent data-dropdown="parent" className="dropdown-parent shrink">
+                {/*column 2*/}
+                <Column className="align-center no-gap no-padding">
+                    <Nav className="navigation-wrapper no-gap no-padding align-center">
+                        <DropdownParent data-dropdown="parent" className="dropdown-parent shrink justify-center">
                             <div data-dropdown="toggle" className="dropdown-toggle grow">
                                 <NavLink to="/home">Home</NavLink>
                             </div>
@@ -79,7 +81,8 @@ function Navbar() {
                         </DropdownParent>
                     </Nav>
                 </Column>
-                <Column className="shrink">
+                {/*column 3*/}
+                <Column className="shrink align-right">
                     {/*HAMBURGER ICON*/}
                     <DasBurgerWrapper onClick={handleMobileMenuState}>
                         <div className="menu-line top"></div>
@@ -94,7 +97,7 @@ function Navbar() {
 
 const Header = styled(Container)`
   &:hover {
-    background-color: black;
+    background-color: grey;
     color: white;
 }
 `;
