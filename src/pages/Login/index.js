@@ -12,11 +12,12 @@ function Login() {
                     <input type="text" name="username" id="username" placeholder="Username" />
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" id="password" placeholder="Password" />
+                <Row>
                     <button type="submit">Login</button>
+                    <button type="submit"><a href="">Register</a></button>
+                </Row>
             </Column>
         </Row>
-
-
     );
 }
 
