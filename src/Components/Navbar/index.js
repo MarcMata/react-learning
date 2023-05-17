@@ -83,6 +83,9 @@ function Navbar() {
                 </Column>
                 {/*column 3*/}
                 <Column className="shrink align-right">
+                    <p><a href="/login">Login</a></p>
+                </Column>
+                <Column className="shrink align-left">
                     {/*HAMBURGER ICON*/}
                     <DasBurgerWrapper onClick={handleMobileMenuState}>
                         <div className="menu-line top"></div>
