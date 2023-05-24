@@ -1,7 +1,7 @@
 import {Row, Column} from "../../Components/Layout";
 import React from "react";
 
-function Index() {
+function Welcome() {
     return (
         <Row className="grow align-center">
             <Column className="justify-center">
@@ -18,4 +18,4 @@ function Index() {
     )
 }
 
-export default Index;
+export default Welcome;

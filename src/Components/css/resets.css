@@ -43,6 +43,8 @@ a, a:visited {
     text-decoration: none;
     color: unset;
 }
+/*prevent form from styling things horizontal*/
+
 
 /*not resets*/
 /*.page-wrapper {*/
