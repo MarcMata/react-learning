@@ -8,8 +8,9 @@ import Navbar from "./Components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import styled from "styled-components";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
 
 
 function App() {
@@ -40,13 +41,29 @@ function App() {
                     </section>
                 </AppWrapper>
             }/>
-            <Route exact path="/Login" element={
+            <Route exact path="/login" element={
                 <AppWrapper>
                     <Navbar/>
                     <section className="App-header">
                         <Login/>
                     </section>
                 </AppWrapper>
+            }/>
+            <Route exact path="/register" element={
+                <AppWrapper>
+                    <Navbar/>
+                    <section className="App-header">
+                        <Register/>
+                    </section>
+                </AppWrapper>
+            }/>
+            <Route exact path="/profile" element={
+            <AppWrapper>
+                <Navbar/>
+                <section className="App-header">
+                    <Profile/>
+                </section>
+            </AppWrapper>
             }/>
         </Routes>
     </Router>
