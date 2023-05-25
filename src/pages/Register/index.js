@@ -69,7 +69,7 @@ function Register() {
                 </RegisterForm>
 
                     <h4>is the user logged in? </h4>
-                    <p>{user ? "Yes" : "No"}</p>
+                    {/*<p>{user ? "Yes" : "No"}</p>*/}
             </Column>
 
         </Row>
