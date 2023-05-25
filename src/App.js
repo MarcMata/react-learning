@@ -10,6 +10,7 @@ import About from "./pages/About";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Profile from "./pages/Profile";
 
 
 function App() {
@@ -55,6 +56,14 @@ function App() {
                         <Register/>
                     </section>
                 </AppWrapper>
+            }/>
+            <Route exact path="/profile" element={
+            <AppWrapper>
+                <Navbar/>
+                <section className="App-header">
+                    <Profile/>
+                </section>
+            </AppWrapper>
             }/>
         </Routes>
     </Router>
