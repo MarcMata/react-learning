@@ -1,7 +1,7 @@
 import React from "react";
 import {Container, Row, Column} from "../../Components/Layout";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
 import { auth } from "../firebase-config.js";
 import { NavLink } from 'react-router-dom';
@@ -15,9 +15,13 @@ function Register() {
     const [user, setUser]= useState({
 
     });
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    });
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+    }, []);
+
 
     const register = async () => {
         try {
@@ -54,9 +58,9 @@ function Register() {
                     {/*<label htmlFor="last_name">Last Name</label>*/}
                     {/*<input type="text" name="last_name" id="last_name" placeholder="Last Name" />*/}
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Email" onChange={(event) => {setRegisterEmail(event.target.value)}} />
+                    <input value={registerEmail} type="email" name="email" id="email" placeholder="Email" onChange={(event) => {setRegisterEmail(event.target.value)}} />
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Password" onChange={(event) => {setRegisterPassword(event.target.value)}} />
+                    <input value={registerPassword} type="password" name="password" id="password" placeholder="Password" onChange={(event) => {setRegisterPassword(event.target.value)}} />
                     {/*<label htmlFor="password">Confirm Password</label>*/}
                     {/*<input type="password" name="ConfirmPassword" id="ConfirmPassword" placeholder="Confirm Password" />*/}
 
