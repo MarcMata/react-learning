@@ -25,9 +25,6 @@
 /*!* Combo classes to extend the container's versatility *!*/
 /*.container.grow {*/
 /*    flex: 1 0 0;*/
-/*    flex-grow: 1;*/
-/*    flex-shrink: 0;*/
-/*    flex-basis: 0;*/
 /*}*/
 /*.container.justify-center {*/
 /*    justify-content: center;*/
