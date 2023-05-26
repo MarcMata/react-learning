@@ -1,12 +1,47 @@
 import ReactDOM from "react-dom/client";
 import {Row, Column, Container} from '../Layout/'
 import styled from "styled-components";
-import React, {useState} from 'react';
-import { NavLink } from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {NavLink, redirect, Redirect} from "react-router-dom";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../pages/firebase-config.js";
+
+
 
 function Navbar() {
     const [mobileMenuState, setMobileMenuState] = useState("mobile-menu-closed");//adds a state for dropdown menu;
     const [switchState, setSwitchState] = useState("false");//adds a state for the switch component;
+
+    const [user, setUser] = useState({});
+
+    const handleLogout = () => {
+        let state = {redirect: true};
+
+        signOut(auth)
+            .then(() => {
+                // Sign-out successful.
+                console.log("Sign-out successful.")
+                //send to login page
+                this.setState({redirect: true});
+            })
+            .catch((error) => {
+                // An error happened.
+                console.log("An error happened.")
+
+            });
+    };
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                setUser(user);
+            } else {
+                setUser(null);
+            }
+        });
+    }, []);
+
+
     const handleMobileMenuState = () => {
         let state = mobileMenuState;
         if (state === "mobile-menu-closed") {
@@ -83,7 +118,11 @@ function Navbar() {
                 </Column>
                 {/*column 3*/}
                 <Column className="shrink align-right">
-                    <p><a href="/login">Login</a></p>
+                    {user ? (
+                        <NavLink to="/login">Login</NavLink>
+                    ) : (
+                        <button onClick={handleLogout} >Logout</button>
+                    )}
                 </Column>
                 <Column className="shrink align-left">
                     {/*HAMBURGER ICON*/}

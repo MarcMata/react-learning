@@ -12,13 +12,11 @@ function Register() {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("")
 
-    const [user, setUser]= useState({
-
-    });
+    const [user, setUser]= useState({});
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
+            return setUser(currentUser);
         });
     }, []);
 
@@ -44,13 +42,15 @@ function Register() {
         await signOut(auth);
     };
 
+
+
     return (
     <Container>
         <Row className="justify-center align-center">
 
             <Column className="justify-center align-center">
                 <h1>Register</h1>
-                <RegisterForm>
+                <RegisterForm action="/login">
                     {/*<label htmlFor="username">Username</label>*/}
                     {/*<input type="text" name="username" id="username" placeholder="Username" />*/}
                     {/*<label htmlFor="first_name">First Name</label>*/}
@@ -68,12 +68,9 @@ function Register() {
                         <RegisterButton onClick={register} type="submit">Register</RegisterButton>
                         <span>Already registered? <Link href="/login">Login now!</Link></span>
 
-
                     </Row>
                 </RegisterForm>
 
-                    <h4>is the user logged in? </h4>
-                    <p>{user ? "Yes" : "No"}</p>
             </Column>
 
         </Row>
@@ -114,6 +111,5 @@ const RegisterForm = styled.form `
     flex: 1 0 auto;
     gap: 10px;
 `
-
+// export user and register
 export default Register;
-

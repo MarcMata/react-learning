@@ -1,12 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Container, Row, Column} from "../../Components/Layout";
 import styled from "styled-components";
+import {onAuthStateChanged} from "firebase/auth";
+import {auth, signOut} from "../firebase-config";
 
 function Profile() {
+    const [user, setUser]= useState({});
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            return setUser(currentUser);
+        });
+    }, []);
+
     return (
         <ProfileContainer>
             <Row className="justify-center">
                 <Column className="text-center">
+
+
                     <ProfilePicture src="https://picsum.photos/200/300" alt="Profile Picture" />
                     <Name>John Doe</Name>
                     <Bio>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis tortor a faucibus congue.</Bio>
@@ -26,6 +38,10 @@ function Profile() {
                             <li><a href="https://linkedin.com/in/johndoe">LinkedIn</a></li>
                         </ul>
                     </ContactInfo>
+
+                    <h4>is the user logged in? </h4>
+                    <p>{user ? "Yes" : "No"}</p>
+
                 </Column>
             </Row>
         </ProfileContainer>
