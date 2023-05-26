@@ -2,6 +2,9 @@
 import React, {useState} from "react";
 import {Row, Column} from "../../Components/Layout/";
 import styled from "styled-components";
+import {signInWithEmailAndPassword} from "firebase/auth";
+import {auth} from "../firebase-config";
+import {NavLink} from "react-router-dom";
 
 //firebase auth
 // import { initializeApp } from "firebase/app";
@@ -24,7 +27,18 @@ function Login() {
     const [user, setUser] = useState({});
 
     const login = async () => {
-
+        try {
+            const user = await signInWithEmailAndPassword(
+                auth,
+                loginEmail,
+                loginPassword
+            );
+            console.log(user);
+            // Redirect to the login page using NavLink
+            <NavLink to="/login"></NavLink>
+        } catch (e) {
+            console.log(e.message);
+        }
     };
 
     return (

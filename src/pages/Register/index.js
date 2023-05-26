@@ -2,7 +2,7 @@ import React from "react";
 import {Container, Row, Column} from "../../Components/Layout";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut} from "firebase/auth";
 import { auth } from "../firebase-config.js";
 import { NavLink } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ function Register() {
 
 
     const logout = async () => {
-
+        await signOut(auth);
     };
 
     return (
@@ -73,7 +73,7 @@ function Register() {
                 </RegisterForm>
 
                     <h4>is the user logged in? </h4>
-                    {/*<p>{user ? "Yes" : "No"}</p>*/}
+                    <p>{user ? "Yes" : "No"}</p>
             </Column>
 
         </Row>
